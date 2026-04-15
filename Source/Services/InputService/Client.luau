@@ -16,15 +16,13 @@ local camera = workspace.CurrentCamera
 local player = Players.LocalPlayer
 local player_gui = player:WaitForChild("PlayerGui")
 
-local MobileControlsGui = player_gui:WaitForChild("MobileControls")
-
-local TouchGui = player_gui:WaitForChild("TouchGui")
-
 local InputServiceClient = {}
 
 export type InputServiceClient = typeof(InputServiceClient)
 
 function InputServiceClient._enable_mobile_controls(self: InputServiceClient)
+    local MobileControlsGui = player_gui:WaitForChild("MobileControls")
+    local TouchGui = player_gui:WaitForChild("TouchGui")
     if not MobileControlsGui or not MobileControlsGui:IsA("ScreenGui") then
         return
     end
@@ -35,6 +33,7 @@ function InputServiceClient._enable_mobile_controls(self: InputServiceClient)
 end
 
 function InputServiceClient._bind_gui_buttons_to_vehicle(self: InputServiceClient)
+    local MobileControlsGui = player_gui:WaitForChild("MobileControls")
     local MobileFrame = MobileControlsGui:FindFirstChild("Mobile")
     if not MobileFrame or not MobileFrame:IsA("Frame") then
         return
